@@ -1,7 +1,7 @@
 """
     Main module to handle logging configuration and setup
     Contains the following functions:
-    1. initialize - initial setup of the logger
+    initialize - initial setup of the logger
 """
 import logging
 import time
@@ -12,16 +12,24 @@ from system.utils import dir_mgr
 
 
 def initialize(log_level=logging.INFO, path='', log_name=''):
-    """
-    initializes the logger to output to both the console and a file.
-    The file is
+    '''
+    Initializes the logger to output to both the console and a file.
 
-    :param log_level: <Optional> Sets the level of logging. Default is INFO
-    :param path: <Optional> Sets the path where the log should be created. If the path is missing it is created. If the
-    path is not set, it is created under the cwd
-    :param log_name: <Optional> Sets the name of the log to be created. If the log_name is not set, a log named
-    <timestamp>.log is added under the path
-    """
+    The file is located by default under the logs directory of the method that executed the initialization of the logger
+    or is user specified. The log name is by default a timestamp unless explicitly defined as input
+
+    Parameters
+    ----------
+    log_level: int (logging level), default logging.INFO, Sets the level of logging. Default is INFO
+    path: string, default cwd, Sets the path where the log should be created. If the path is missing it is created. If
+        the path is not set, it is created under the cwd
+    log_name: string, default timestamp, Sets the name of the log to be created. If the log_name is not set, a log named
+        <timestamp>.log is added under the path
+
+    Returns
+    -------
+        None, initializes the logging parameters
+    '''
 
     initialization_file = inspect.stack()[-1].filename
     # Get the root logger
