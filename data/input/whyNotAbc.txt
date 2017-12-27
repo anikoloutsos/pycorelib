@@ -1,0 +1,10 @@
+There's a bit of a story behind interfaces in Python.
+The original attitude, which held sway for many years, is that you don't need them: Python works on the
+EAFP (easier to ask forgiveness than permission) principle. That is, instead of specifying that you accept an,
+I dunno, ICloseable object, you simply try to close the object when you need to, and if it raises an exception then
+it raises an exception.
+
+So in this mentality you would just write your classes separately, and use them as you will.
+If one of them doesn't conform to the requirements, your program will raise an exception;
+conversely, if you write another class with the right methods then it will just work, without your needing to specify
+that it implements your particular interface.
